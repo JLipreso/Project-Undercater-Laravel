@@ -49,10 +49,40 @@ class Add extends Controller
             }
         }
 
-        return [
-            "foods"             => $foods,
-            "count_dessert"     => $count_dessert,
-            "count_dish"        => $count_dish
-        ];
+        if(count($foods) == 0) {
+            return [
+                "success"   => false,
+                "message"   => "Please select ". $request['target_dish'] ." food and ". $request['target_dessert'] ." dessert"
+            ];
+        }
+        else if($count_dish < intval($request['target_dish'])) {
+            return [
+                "success"   => false,
+                "message"   => $request['target_dish'] . " dish is required to continue."
+            ];
+        }
+        else if($count_dish !== intval($request['target_dish'])) {
+            return [
+                "success"   => false,
+                "message"   => $request['target_dish'] . " dish is required."
+            ];
+        }
+        else if($count_dessert !== intval($request['target_dessert'])) {
+            return [
+                "success"   => false,
+                "message"   => $request['target_dessert'] . " dessert is required."
+            ];
+        }
+        else {
+            return [
+                "success"           => true,
+                "message"           => "Next",
+                "data"              => [
+                    "foods"             => $foods,
+                    "count_dessert"     => $count_dessert,
+                    "count_dish"        => $count_dish
+                ]
+            ];
+        }
     }
 }

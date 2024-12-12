@@ -8,16 +8,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'add_ons'], function () {
-
+    Route::get('fetchAll', [App\Http\Controllers\add_ons\FetchAll::class, 'fetchAll']);
 });
 
-Route::group(['prefix' => 'blogs'], function () {
-
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('fetchAll', [App\Http\Controllers\blog\FetchAll::class, 'fetchAll']);
 });
 
 Route::group(['prefix' => 'booking'], function () {
+    Route::get('profile', [App\Http\Controllers\booking\Profile::class, 'profile']);
     Route::get('initBooking', [App\Http\Controllers\booking\Book::class, 'init']);
     Route::get('themeAndPacks', [App\Http\Controllers\booking\Book::class, 'themeAndPacks']);
+    Route::get('placeReservation', [App\Http\Controllers\booking\Book::class, 'placeReservation']);
 });
 
 Route::group(['prefix' => 'booking_activity'], function () {
@@ -25,11 +27,13 @@ Route::group(['prefix' => 'booking_activity'], function () {
 });
 
 Route::group(['prefix' => 'booking_addons'], function () {
-
+    Route::get('add', [App\Http\Controllers\booking_addons\Add::class, 'add']);
+    Route::get('remove/{dataid}', [App\Http\Controllers\booking_addons\Remove::class, 'remove']);
 });
 
 Route::group(['prefix' => 'booking_foods'], function () {
     Route::get('add', [App\Http\Controllers\booking_foods\Add::class, 'add']);
+    Route::get('remove/{dataid}', [App\Http\Controllers\booking_foods\Remove::class, 'remove']);
     Route::get('verify', [App\Http\Controllers\booking_foods\Add::class, 'verify']);
 });
 
@@ -43,7 +47,7 @@ Route::group(['prefix' => 'events'], function () {
 });
 
 Route::group(['prefix' => 'inquiry'], function () {
-
+    Route::get('send', [App\Http\Controllers\inquiry\Send::class, 'send']);
 });
 
 Route::group(['prefix' => 'inventory_stocks'], function () {
