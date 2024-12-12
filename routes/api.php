@@ -9,6 +9,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'add_ons'], function () {
     Route::get('fetchAll', [App\Http\Controllers\add_ons\FetchAll::class, 'fetchAll']);
+    Route::get('fetchDiscounted', [App\Http\Controllers\add_ons\FetchDiscounted::class, 'fetch']);
 });
 
 Route::group(['prefix' => 'blog'], function () {
@@ -55,7 +56,7 @@ Route::group(['prefix' => 'inventory_stocks'], function () {
 });
 
 Route::group(['prefix' => 'marketing'], function () {
-
+    Route::get('fetchAll', [App\Http\Controllers\marketing\FetchAll::class, 'fetchAll']);
 });
 
 Route::group(['prefix' => 'menu'], function () {
