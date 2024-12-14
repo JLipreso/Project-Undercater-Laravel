@@ -21,6 +21,7 @@ Route::group(['prefix' => 'booking'], function () {
     Route::get('initBooking', [App\Http\Controllers\booking\Book::class, 'init']);
     Route::get('themeAndPacks', [App\Http\Controllers\booking\Book::class, 'themeAndPacks']);
     Route::get('placeReservation', [App\Http\Controllers\booking\Book::class, 'placeReservation']);
+    Route::get('fetchAll', [App\Http\Controllers\booking\FetchAll::class, 'fetchAll']);
 });
 
 Route::group(['prefix' => 'booking_activity'], function () {
@@ -40,6 +41,10 @@ Route::group(['prefix' => 'booking_foods'], function () {
 
 Route::group(['prefix' => 'categories'], function () {
 
+});
+
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('counter', [App\Http\Controllers\dashboard\FetchAll::class, 'counter']);
 });
 
 Route::group(['prefix' => 'events'], function () {
