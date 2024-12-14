@@ -71,6 +71,10 @@ Route::group(['prefix' => 'notifications'], function () {
 
 });
 
+Route::group(['prefix' => 'photo'], function () {
+    Route::post('upload', [App\Http\Controllers\photo\Upload::class, 'upload']);
+});
+
 Route::group(['prefix' => 'ratings'], function () {
 
 });
@@ -95,7 +99,7 @@ Route::group(['prefix' => 'users_customer'], function () {
 });
 
 Route::group(['prefix' => 'users_system'], function () {
-
+    Route::get('login', [App\Http\Controllers\users_system\Login::class, 'login']);
 });
 
 
