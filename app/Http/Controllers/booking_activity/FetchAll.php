@@ -14,7 +14,7 @@ class FetchAll extends Controller
 {
     public static function fetchAll(Request $request) {
         return DB::table("booking_activity")
-        ->where("booking_id", $request['booking_dataid'])
+        ->where("booking_dataid", $request['booking_dataid'])
         ->orderBy('sort', 'asc')
         ->get();
     }

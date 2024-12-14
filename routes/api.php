@@ -29,6 +29,9 @@ Route::group(['prefix' => 'booking'], function () {
 
 Route::group(['prefix' => 'booking_activity'], function () {
     Route::get('fetchAll', [App\Http\Controllers\booking_activity\FetchAll::class, 'fetchAll']);
+    Route::get('add', [App\Http\Controllers\booking_activity\Add::class, 'add']);
+    Route::get('delete', [App\Http\Controllers\booking_activity\Delete::class, 'delete']);
+    Route::get('update', [App\Http\Controllers\booking_activity\Update::class, 'update']);
 });
 
 Route::group(['prefix' => 'booking_addons'], function () {
