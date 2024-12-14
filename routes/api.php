@@ -22,10 +22,13 @@ Route::group(['prefix' => 'booking'], function () {
     Route::get('themeAndPacks', [App\Http\Controllers\booking\Book::class, 'themeAndPacks']);
     Route::get('placeReservation', [App\Http\Controllers\booking\Book::class, 'placeReservation']);
     Route::get('fetchAll', [App\Http\Controllers\booking\FetchAll::class, 'fetchAll']);
+    Route::get('approve', [App\Http\Controllers\booking\Approve::class, 'approve']);
+    Route::get('decline', [App\Http\Controllers\booking\Decline::class, 'decline']);
+    Route::get('delete', [App\Http\Controllers\booking\Delete::class, 'delete']);
 });
 
 Route::group(['prefix' => 'booking_activity'], function () {
-
+    Route::get('fetchAll', [App\Http\Controllers\booking_activity\FetchAll::class, 'fetchAll']);
 });
 
 Route::group(['prefix' => 'booking_addons'], function () {
