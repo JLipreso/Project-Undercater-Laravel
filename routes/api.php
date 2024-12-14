@@ -56,6 +56,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 Route::group(['prefix' => 'events'], function () {
     Route::get('fetchAll', [App\Http\Controllers\events\FetchAll::class, 'fetchAll']);
     Route::get('checkAvailability', [App\Http\Controllers\events\CheckAvailability::class, 'check']);
+    Route::get('add', [App\Http\Controllers\events\Add::class, 'add']);
+    Route::get('update', [App\Http\Controllers\events\Update::class, 'update']);
+    Route::get('delete', [App\Http\Controllers\events\Delete::class, 'delete']);
 });
 
 Route::group(['prefix' => 'inquiry'], function () {
@@ -100,6 +103,9 @@ Route::group(['prefix' => 'room_type'], function () {
 
 Route::group(['prefix' => 'themes'], function () {
     Route::get('fetchAll', [App\Http\Controllers\themes\FetchAll::class, 'fetchAll']);
+    Route::get('add', [App\Http\Controllers\themes\Add::class, 'add']);
+    Route::get('update', [App\Http\Controllers\themes\Update::class, 'update']);
+    Route::get('delete', [App\Http\Controllers\themes\Delete::class, 'delete']);
 });
 
 Route::group(['prefix' => 'users_customer'], function () {
