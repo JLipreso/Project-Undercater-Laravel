@@ -13,8 +13,16 @@ use Illuminate\Support\Facades\DB;
 class FetchAll extends Controller
 {
     public static function fetchAll(Request $request) {
-        return DB::table("menu")
-            ->orderBy('name', 'asc')
-            ->get();
+        if((isset($request['category'])) && ($request['category'] !== 'all')) {
+            return DB::table("menu")
+                ->orderBy('name', 'asc')
+                ->where("category", $request['category'])
+                ->get();
+        }
+        else {
+            return DB::table("menu")
+                ->orderBy('name', 'asc')
+                ->get();
+        }
     }
 }

@@ -21,7 +21,8 @@ class Update extends Controller
                 "package"       => $request['package'],
                 "min_occupancy" => $request['min_occupancy'],
                 "max_occupancy" => $request['max_occupancy'],
-                "price"         => $request['price']
+                "price"         => $request['price'],
+                "photo"         => $request['photo']
             ]);
         
         if($updated) {

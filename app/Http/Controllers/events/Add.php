@@ -62,6 +62,12 @@ class Add extends Controller
                 "message"   => "Event price is required."
             ];
         }
+        else if(empty($request['photo'])) {
+            return [
+                "success"   => false,
+                "message"   => "Event photo is required."
+            ];
+        }
         else {
             $source = DB::table("events")->insert([
                 "name"              => $request['name'],
@@ -69,7 +75,8 @@ class Add extends Controller
                 "package"           => $request['package'],
                 "min_occupancy"     => $request['min_occupancy'],
                 "max_occupancy"     => $request['max_occupancy'],
-                "price"             => $request['price']
+                "price"             => $request['price'],
+                "photo"             => $request['photo']
             ]);
 
             if($source) {
