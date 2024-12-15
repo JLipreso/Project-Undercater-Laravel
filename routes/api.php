@@ -78,10 +78,14 @@ Route::group(['prefix' => 'marketing'], function () {
 
 Route::group(['prefix' => 'menu'], function () {
     Route::get('fetchAll', [App\Http\Controllers\menu\FetchAll::class, 'fetchAll']);
+
+    Route::get('add', [App\Http\Controllers\menu\Add::class, 'add']);
+    Route::get('delete', [App\Http\Controllers\menu\Delete::class, 'delete']);
+    Route::get('update', [App\Http\Controllers\menu\Update::class, 'update']);
 });
 
 Route::group(['prefix' => 'menu_categories'], function () {
-
+    Route::get('fetchAll', [App\Http\Controllers\menu_categories\FetchAll::class, 'fetchAll']);
 });
 
 Route::group(['prefix' => 'notifications'], function () {
