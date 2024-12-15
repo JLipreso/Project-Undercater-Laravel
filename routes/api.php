@@ -10,6 +10,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'add_ons'], function () {
     Route::get('fetchAll', [App\Http\Controllers\add_ons\FetchAll::class, 'fetchAll']);
     Route::get('fetchDiscounted', [App\Http\Controllers\add_ons\FetchDiscounted::class, 'fetch']);
+    Route::get('update', [App\Http\Controllers\add_ons\Update::class, 'update']);
+    Route::get('create', [App\Http\Controllers\add_ons\Create::class, 'create']);
+    Route::get('delete', [App\Http\Controllers\add_ons\Delete::class, 'delete']);
 });
 
 Route::group(['prefix' => 'blog'], function () {
@@ -69,7 +72,10 @@ Route::group(['prefix' => 'inquiry'], function () {
 });
 
 Route::group(['prefix' => 'inventory_stocks'], function () {
-
+    Route::get('fetchAll', [App\Http\Controllers\inventory_stocks\FetchAll::class, 'fetchAll']);
+    Route::get('update', [App\Http\Controllers\inventory_stocks\Update::class, 'update']);
+    Route::get('create', [App\Http\Controllers\inventory_stocks\Create::class, 'create']);
+    Route::get('delete', [App\Http\Controllers\inventory_stocks\Delete::class, 'delete']);
 });
 
 Route::group(['prefix' => 'marketing'], function () {
@@ -86,6 +92,9 @@ Route::group(['prefix' => 'menu'], function () {
 
 Route::group(['prefix' => 'menu_categories'], function () {
     Route::get('fetchAll', [App\Http\Controllers\menu_categories\FetchAll::class, 'fetchAll']);
+    Route::get('update', [App\Http\Controllers\menu_categories\Update::class, 'update']);
+    Route::get('delete', [App\Http\Controllers\menu_categories\Delete::class, 'delete']);
+    Route::get('create', [App\Http\Controllers\menu_categories\Create::class, 'create']);
 });
 
 Route::group(['prefix' => 'notifications'], function () {
