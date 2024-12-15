@@ -14,6 +14,9 @@ Route::group(['prefix' => 'add_ons'], function () {
 
 Route::group(['prefix' => 'blog'], function () {
     Route::get('fetchAll', [App\Http\Controllers\blog\FetchAll::class, 'fetchAll']);
+    Route::get('create', [App\Http\Controllers\blog\Create::class, 'create']);
+    Route::get('delete', [App\Http\Controllers\blog\Delete::class, 'delete']);
+    Route::get('update', [App\Http\Controllers\blog\Update::class, 'update']);
 });
 
 Route::group(['prefix' => 'booking'], function () {
@@ -87,6 +90,7 @@ Route::group(['prefix' => 'notifications'], function () {
 
 Route::group(['prefix' => 'photo'], function () {
     Route::post('upload', [App\Http\Controllers\photo\Upload::class, 'upload']);
+    Route::post('uploadFunct', [App\Http\Controllers\photo\UploadFunct::class, 'upload']);
 });
 
 Route::group(['prefix' => 'ratings'], function () {

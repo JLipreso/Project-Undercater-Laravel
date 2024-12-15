@@ -13,8 +13,27 @@ use Illuminate\Support\Facades\DB;
 class FetchAll extends Controller
 {
     public static function fetchAll(Request $request) {
-        return DB::table("blogs")
+        $source =DB::table("blogs")
         ->orderBy('dataid', 'desc')
         ->get();
+
+        $list = [];
+
+        foreach($source as $blog) {
+            $list[] = [
+                "dataid"        => $blog->dataid,
+                "title"         => $blog->title,
+                "description"   => $blog->description,
+                "photo"         => $blog->photo,
+                "fullpath"      => env('FTP_DIRECTORY') . $blog->photo,
+                "status"        => $blog->status,
+                "created_at"    => $blog->created_at,
+
+            ];
+        }
+
+        return $list;
+
+         
     }
 }
