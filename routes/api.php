@@ -31,6 +31,7 @@ Route::group(['prefix' => 'booking'], function () {
     Route::get('approve', [App\Http\Controllers\booking\Approve::class, 'approve']);
     Route::get('decline', [App\Http\Controllers\booking\Decline::class, 'decline']);
     Route::get('delete', [App\Http\Controllers\booking\Delete::class, 'delete']);
+    Route::get('report', [App\Http\Controllers\booking\Report::class, 'report']);
 });
 
 Route::group(['prefix' => 'booking_activity'], function () {
@@ -69,6 +70,8 @@ Route::group(['prefix' => 'events'], function () {
 
 Route::group(['prefix' => 'inquiry'], function () {
     Route::get('send', [App\Http\Controllers\inquiry\Send::class, 'send']);
+    Route::get('fetchAll', [App\Http\Controllers\inquiry\FetchAll::class, 'fetchAll']);
+    Route::get('delete', [App\Http\Controllers\inquiry\Delete::class, 'delete']);
 });
 
 Route::group(['prefix' => 'inventory_stocks'], function () {
@@ -80,6 +83,9 @@ Route::group(['prefix' => 'inventory_stocks'], function () {
 
 Route::group(['prefix' => 'marketing'], function () {
     Route::get('fetchAll', [App\Http\Controllers\marketing\FetchAll::class, 'fetchAll']);
+    Route::get('create', [App\Http\Controllers\marketing\Create::class, 'create']);
+    Route::get('delete', [App\Http\Controllers\marketing\Delete::class, 'delete']);
+    Route::get('update', [App\Http\Controllers\marketing\Update::class, 'update']);
 });
 
 Route::group(['prefix' => 'menu'], function () {
@@ -134,6 +140,10 @@ Route::group(['prefix' => 'users_customer'], function () {
 
 Route::group(['prefix' => 'users_system'], function () {
     Route::get('login', [App\Http\Controllers\users_system\Login::class, 'login']);
+    Route::get('fetchAll', [App\Http\Controllers\users_system\FetchAll::class, 'fetchAll']);
+    Route::get('create', [App\Http\Controllers\users_system\Create::class, 'create']);
+    Route::get('delete', [App\Http\Controllers\users_system\Delete::class, 'delete']);
+    Route::get('update', [App\Http\Controllers\users_system\Update::class, 'update']);
 });
 
 

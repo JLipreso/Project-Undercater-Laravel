@@ -1,1 +1,2 @@
 Client logout
+Booking total in database is null

@@ -138,6 +138,7 @@ class Book extends Controller
                 "last_name"     => $request['last_name'],
                 "email"         => $request['email'],
                 "phone"         => $request['phone'],
+                "total_price"   => $request['total_price'],
                 "status"        => "1"
             ]);
         

@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * inquiry/fetchAll
+ */
+
 class Send extends Controller
 {
     public static function send(Request $request) {
