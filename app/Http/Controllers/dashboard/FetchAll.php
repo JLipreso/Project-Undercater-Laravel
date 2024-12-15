@@ -16,51 +16,51 @@ class FetchAll extends Controller
         return [
             [
                 "label"                 => "Total All Booked",
-                "value"                 => "0.00"
+                "value"                 => DB::table('booking')->count()
             ],
             [
                 "label"                 => "Total Users",
-                "value"                 => "0.00"
+                "value"                 => DB::table('users_customer')->count()
             ],
             [
                 "label"                 => "Total Staff",
-                "value"                 => "0.00"
+                "value"                 => DB::table('users_system')->count()
             ],
             [
                 "label"                 => "Total Pending",
-                "value"                 => "0.00"
+                "value"                 => DB::table('booking')->where('status', 0)->count()
             ],
             [
                 "label"                 => "Total Approve",
-                "value"                 => "0.00"
+                "value"                 => DB::table('booking')->where('status', 1)->count()
             ],
             [
-                "label"                 => "Total Cancel",
-                "value"                 => "0.00"
+                "label"                 => "Total Declined",
+                "value"                 => DB::table('booking')->where('status', 3)->count()
             ],
             [
                 "label"                 => "Total Event Room",
-                "value"                 => "0.00"
+                "value"                 => DB::table('events')->count()
             ],
             [
                 "label"                 => "Total Blogs Room",
-                "value"                 => "0.00"
+                "value"                 => DB::table('blogs')->count()
             ],
             [
                 "label"                 => "Total Menu Foods",
-                "value"                 => "0.00"
+                "value"                 => DB::table('menu')->count()
             ],
             [
                 "label"                 => "Total Menu Categories",
-                "value"                 => "0.00"
+                "value"                 => DB::table('menu_categories')->count()
             ],
             [
                 "label"                 => "Total Add-ons",
-                "value"                 => "0.00"
+                "value"                 => DB::table('add_ons')->count()
             ],
             [
                 "label"                 => "Total Inventory",
-                "value"                 => "0.00"
+                "value"                 => DB::table('inventory_stocks')->count()
             ],
         ];
     }

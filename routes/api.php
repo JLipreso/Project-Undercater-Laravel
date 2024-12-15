@@ -32,6 +32,8 @@ Route::group(['prefix' => 'booking'], function () {
     Route::get('decline', [App\Http\Controllers\booking\Decline::class, 'decline']);
     Route::get('delete', [App\Http\Controllers\booking\Delete::class, 'delete']);
     Route::get('report', [App\Http\Controllers\booking\Report::class, 'report']);
+    Route::get('calendar', [App\Http\Controllers\booking\FetchAll::class, 'calendar']);
+    Route::get('fetchByDataID/{dataid}', [App\Http\Controllers\booking\FetchAll::class, 'fetchByDataID']);
 });
 
 Route::group(['prefix' => 'booking_activity'], function () {
