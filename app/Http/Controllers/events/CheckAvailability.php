@@ -32,13 +32,20 @@ class CheckAvailability extends Controller
             ];
         }
         else {
-            /**
-             * Code to update soon
-             */
-            return [
-                "success"   => true,
-                "message"   => "Event is available"
-            ];
+            $count = DB::table('booking')->where('event_date', $request['date'])->count();
+
+            if($count > 0) {
+                return [
+                    "success"   => false,
+                    "message"   => "Date is not available"
+                ];
+            }
+            else {  
+                return [
+                    "success"   => true,
+                    "message"   => "Event is available"
+                ];
+            }
         }
     }
 }
