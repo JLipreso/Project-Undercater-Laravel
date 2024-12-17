@@ -155,5 +155,26 @@ class Book extends Controller
             ];
         }
     }
+
+    public static function updatePaymentReceipt(Request $request) {
+            $source = DB::table('booking')
+                ->where('dataid', $request['booking_dataid'])
+                ->update([
+                    "payment_receipt"    => $request['photo']
+                ]);
+            
+            if($source) {
+                return [
+                    "success"   => true,
+                    "message"   => "Updated successfully"
+                ];
+            }
+            else {
+                return [
+                    "success"   => false,
+                    "message"   => "Fail to upload receipt photo"
+                ];
+            }
+    }
 }
 

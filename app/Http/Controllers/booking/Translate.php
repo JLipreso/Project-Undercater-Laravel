@@ -37,6 +37,12 @@ class Translate extends Controller
                 "value"     => "Declined"
             ];
         }
+        else if($status == 4) {
+            return [
+                "key"       => $status,
+                "value"     => "Cancelled"
+            ];
+        }
         else {
             return [
                 "key"       => $status,

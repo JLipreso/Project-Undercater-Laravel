@@ -31,9 +31,14 @@ Route::group(['prefix' => 'booking'], function () {
     Route::get('approve', [App\Http\Controllers\booking\Approve::class, 'approve']);
     Route::get('decline', [App\Http\Controllers\booking\Decline::class, 'decline']);
     Route::get('delete', [App\Http\Controllers\booking\Delete::class, 'delete']);
+    Route::get('cancel', [App\Http\Controllers\booking\Cancel::class, 'cancel']);
     Route::get('report', [App\Http\Controllers\booking\Report::class, 'report']);
     Route::get('calendar', [App\Http\Controllers\booking\FetchAll::class, 'calendar']);
     Route::get('fetchByDataID/{dataid}', [App\Http\Controllers\booking\FetchAll::class, 'fetchByDataID']);
+    Route::get('fetchByUser/{user_dataid}', [App\Http\Controllers\booking\FetchAll::class, 'fetchByUser']);
+    Route::get('getDraft/{user_dataid}', [App\Http\Controllers\booking\Draft::class, 'get']);
+
+    Route::get('updatePaymentReceipt', [App\Http\Controllers\booking\Book::class, 'updatePaymentReceipt']);
 });
 
 Route::group(['prefix' => 'booking_activity'], function () {
