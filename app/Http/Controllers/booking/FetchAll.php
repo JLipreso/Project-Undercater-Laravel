@@ -113,12 +113,38 @@ class FetchAll extends Controller
         ->get();
 
         if(count($source) > 0) {
+
+            $addons     = DB::table('booking_addons')
+                        ->join('add_ons', 'booking_addons.addon_dataid', '=', 'add_ons.dataid')
+                        ->select(
+                            'add_ons.*',
+                            'booking_addons.dataid as booking_addons_dataid',
+                            'booking_addons.price as booking_addons_price'
+                        )
+                        ->where('booking_addons.booking_dataid', $source[0]->dataid)
+                        ->orderBy('add_ons.name', 'asc')
+                        ->get();
+
+            $addons_total = 0;
+            foreach($addons as $addon) {
+                $addons_total = $addons_total + floatval($addon->booking_addons_price);
+            }
+
+
             return [
                 "header"    => $source[0],
                 "event"     => \App\Http\Controllers\events\FetchSingle::fetch($source[0]->event_dataid),
                 "status"    => \App\Http\Controllers\booking\Translate::bookingStatus($source[0]->status),
                 "valid_id"  => env('FTP_DIRECTORY') . $source[0]->valid_id_path,
-                "location"  => \App\Http\Controllers\booking\Translate::bookingLocation($source[0]->event_location)
+                "location"  => \App\Http\Controllers\booking\Translate::bookingLocation($source[0]->event_location),
+                "food"      => DB::table('booking_foods')
+                    ->join('menu','booking_foods.menu_dataid', '=', 'menu.dataid')
+                    ->select('menu.*', 'booking_foods.dataid as booking_food_dataid')
+                    ->where('booking_foods.booking_dataid', $source[0]->dataid)
+                    ->orderBy('menu.name', 'asc')
+                    ->get(),
+                "addons"        => $addons,
+                "addons_total"  => $addons_total
             ];
         }
         else {
