@@ -37,7 +37,6 @@ Route::group(['prefix' => 'booking'], function () {
     Route::get('fetchByDataID/{dataid}', [App\Http\Controllers\booking\FetchAll::class, 'fetchByDataID']);
     Route::get('fetchByUser/{user_dataid}', [App\Http\Controllers\booking\FetchAll::class, 'fetchByUser']);
     Route::get('getDraft/{user_dataid}', [App\Http\Controllers\booking\Draft::class, 'get']);
-
     Route::get('updatePaymentReceipt', [App\Http\Controllers\booking\Book::class, 'updatePaymentReceipt']);
 });
 
@@ -65,6 +64,7 @@ Route::group(['prefix' => 'categories'], function () {
 
 Route::group(['prefix' => 'dashboard'], function () {
     Route::get('counter', [App\Http\Controllers\dashboard\FetchAll::class, 'counter']);
+    Route::get('chart', [App\Http\Controllers\dashboard\FetchAll::class, 'chart']);
 });
 
 Route::group(['prefix' => 'events'], function () {

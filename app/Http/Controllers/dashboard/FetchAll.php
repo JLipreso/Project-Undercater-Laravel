@@ -64,4 +64,55 @@ class FetchAll extends Controller
             ],
         ];
     }
+
+    public static function chart(Request $request) {
+        return [
+            "sale"      => [
+                "labels"        => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                "data"          => [
+                    FetchAll::countBooking(1), 
+                    FetchAll::countBooking(2), 
+                    FetchAll::countBooking(3), 
+                    FetchAll::countBooking(4), 
+                    FetchAll::countBooking(5), 
+                    FetchAll::countBooking(6), 
+                    FetchAll::countBooking(7), 
+                    FetchAll::countBooking(8), 
+                    FetchAll::countBooking(9), 
+                    FetchAll::countBooking(10), 
+                    FetchAll::countBooking(11), 
+                    FetchAll::countBooking(12)
+                ]
+            ],
+            "revenue"   => [
+                ""              => "",
+                "data"          => [
+                    FetchAll::countSalesPermonth(1), 
+                    FetchAll::countSalesPermonth(2), 
+                    FetchAll::countSalesPermonth(3), 
+                    FetchAll::countSalesPermonth(4), 
+                    FetchAll::countSalesPermonth(5), 
+                    FetchAll::countSalesPermonth(6), 
+                    FetchAll::countSalesPermonth(7), 
+                    FetchAll::countSalesPermonth(8), 
+                    FetchAll::countSalesPermonth(9), 
+                    FetchAll::countSalesPermonth(10), 
+                    FetchAll::countSalesPermonth(11), 
+                    FetchAll::countSalesPermonth(12)
+                ]
+            ]
+        ];
+    }
+
+    public static function countBooking($month) {
+        return DB::table('booking')
+            ->whereMonth('event_date', $month)
+            ->count();
+    }
+
+    public static function countSalesPermonth($month) {
+        return DB::table('booking')
+            ->whereMonth('event_date', $month)
+            ->sum('total_price');
+    }
 }
